@@ -1,6 +1,7 @@
 <script>
 import {store} from "../store.js";
 
+
 export default {
   name: "AppCard",
 
@@ -21,7 +22,7 @@ export default {
  <div class="card" v-for="card in store.cards">
     <h3 class="title">{{ card.title }}</h3>
     <h4 class="original-title"> {{ card.original_title }}</h4>
-    <p class="language">{{card.original_language}}</p>
+    <img class="country-flag" :src="this.store.flagAddress + card.original_language + '.png'">
     <p class="vote">{{card.vote_count}}</p>
  </div>
 
@@ -40,6 +41,13 @@ export default {
 
         display: flex;
         flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+
+        .country-flag {
+          width: 25px;
+          height: 20px;
+        }
     }
 
 </style>
