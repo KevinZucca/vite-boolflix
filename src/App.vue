@@ -12,14 +12,22 @@ export default {
     }
   },
 
+  created() {
+    axios.get("https://api.themoviedb.org/3/discover/movie?api_key=4e2a533e46ec71346f9b1fdf830c85b5&query=").then((res)=> {
+        this.store.cards = res.data.results;
+      })
+  },
+
   components: {
     AppHeader,
     AppMain,
   },
 
   methods: {
-    searchSomething() {
-      axios.get("https://api.themoviedb.org/3/search/movie?api_key=4e2a533e46ec71346f9b1fdf830c85b5&query=title").then((res)=> {
+    searchTitle() {
+      let newList = this.store.APIcall + this.store.APIquery + this.store.inputValue;
+
+      axios.get(newList).then((res)=> {
         this.store.cards = res.data.results;
       })
     }
@@ -28,7 +36,7 @@ export default {
 </script>
 
 <template>
-  <AppHeader @searchClicked="searchSomething()"></AppHeader>
+  <AppHeader @searchClicked="searchTitle()"></AppHeader>
   <AppMain></AppMain>
 </template>
 
