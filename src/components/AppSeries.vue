@@ -6,16 +6,21 @@ export default {
   name: "AppSeries",
 
 
+
   data() {
     return {
       store,
       language: "",
+      emits: ["searchSeries"],
+
+
     }
   },
 
   components: {
     SeriesItem,
   },
+
 
   methods: { 
     checkLanguageFlag(flag) {
@@ -36,7 +41,7 @@ export default {
 
 
     convertNumber(number) {
-      const newNumber = Math.floor(Math.ceil(number / 2));
+      const newNumber = Math.floor(Math.ceil(Number(number / 2)));
       this.store.seriesStarsVote = newNumber;
       return newNumber;
     }
@@ -49,7 +54,7 @@ export default {
  <div id="container">
     <div id="input-container">
         <input v-model="store.seriesInput" @keyup.enter="$emit('searchSeries')" type="text" placeholder="Cerca">
-        <button @click="$emit('searchSeries')">Vai</button>
+        <button class="goButton" @click="$emit('searchSeries')">Vai</button>
     </div>
     <div id="series-container">
         <SeriesItem v-for="serie in store.series"

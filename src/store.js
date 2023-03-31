@@ -6,7 +6,7 @@ export const store = reactive ({
 
     flagAddress: "https://flagcdn.com/48x36/",
 
-    imageAddress: "https://image.tmdb.org/t/p/w200",
+    imageAddress: "https://image.tmdb.org/t/p/w342",
 
     languages: "",
 

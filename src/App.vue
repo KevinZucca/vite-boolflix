@@ -17,7 +17,6 @@ export default {
   created() {
     axios.get(store.firstAPIcall).then((res)=> {
         this.store.movies = res.data.results;
-        console.log(res.data.results)
       })
 
     axios.get(store.secondaAPIcall).then((res)=> {
