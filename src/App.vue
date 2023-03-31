@@ -2,33 +2,72 @@
 
 import {store} from "../src/store.js";
 import AppHeader from "./components/AppHeader.vue";
-import AppMain from "./components/AppMain.vue";
+import AppMovies from "./components/AppMovies.vue";
+import AppSeries from "./components/AppSeries.vue";
 import axios from "axios";
 
 export default {
   data() {
     return {
       store,
+      pageIndex: "",
     }
   },
 
   created() {
-    axios.get("https://api.themoviedb.org/3/discover/movie?api_key=4e2a533e46ec71346f9b1fdf830c85b5&query=&language=it-IT").then((res)=> {
-        this.store.cards = res.data.results;
+    axios.get(store.firstAPIcall).then((res)=> {
+        this.store.movies = res.data.results;
       })
+
+    axios.get(store.secondaAPIcall).then((res)=> {
+      this.store.series = res.data.results;
+    })
+
+
   },
 
   components: {
     AppHeader,
-    AppMain,
+    AppMovies,
+    AppSeries,
   },
 
   methods: {
-    searchTitle() {
-      let newList = this.store.APIcall + this.store.APIquery + this.store.inputValue;
 
-      axios.get(newList).then((res)=> {
-        this.store.cards = res.data.results;
+    searchMovieTitle() {
+      let newMoviesList = this.store.APIcall + this.store.APIquery + this.store.inputValue;
+
+      axios.get(newMoviesList).then((res)=> {
+        this.store.movies = res.data.results;
+      })
+    },
+
+    searchSeriesTitle() {
+      let newSeriesList = this.store.APIcall2 + this.store.APIquery + this.store.seriesInput;
+
+      axios.get(newSeriesList).then((res)=> {
+        this.store.series = res.data.results;
+      })
+    },
+
+    goNextPage() {
+      this.store.movies[this.pageIndex];
+
+      let actualPage = this.store.firstAPIcall + "&page=" + this.pageIndex;
+      this.pageIndex++;
+      axios.get(actualPage).then((res)=> {
+        this.store.movies = res.data.results;
+      })
+    },
+
+    goPrevPage() {
+      this.store.movies[this.pageIndex];
+
+      let actualPage = this.store.firstAPIcall + "&page=" + this.pageIndex;
+      this.pageIndex--;
+      axios.get(actualPage).then((res)=> {
+        this.store.movies = res.data.results;
+
       })
     }
   }
@@ -36,8 +75,9 @@ export default {
 </script>
 
 <template>
-  <AppHeader @searchClicked="searchTitle()"></AppHeader>
-  <AppMain></AppMain>
+  <AppHeader @prevPage="goPrevPage()" @nextPage="goNextPage()" @searchClicked="searchMovieTitle()"></AppHeader>
+  <AppMovies></AppMovies>
+  <AppSeries @searchSeries="searchSeriesTitle()"></AppSeries>
 </template>
 
 <style lang="scss" scoped>
