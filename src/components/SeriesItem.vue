@@ -4,42 +4,28 @@ import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 
 export default {
-  name: "MovieItem",
+  name: "SeriesItem",
 
 
   data() {
     return {
       store,
-      language: "",
     }
   },
 
   methods: {
-   
-  },
-
-  created() {
-      this.language = this.store.flagAddress + this.store.movies.original_language + '.png';
-      console.log(this.language)
-
-      if(this.store.movies.original_language == "undefined") {
-        this.language = "lingua sconosciuta"
-      } else if (this.store.movies.original_language == "en") {
-        this.store.movies.original_language == "gb"
-      }
+    
   }
-
-
 }
 </script>
    
 <template>
- <div class="card" v-for="movie in store.movies">
-    <img class="poster" :src="store.imageAddress + movie.poster_path" alt="">
-    <h3 class="title">{{ movie.title }}</h3>
-    <h4 class="original-title"> {{ movie.original_title }}</h4>
-    <img class="country-flag" :src="this.language">
-    <p class="vote">{{movie.vote_average}}</p>
+ <div class="card" v-for="serie in store.series">
+    <img class="poster" :src="store.imageAddress + serie.poster_path" alt="">
+    <h3 class="title">{{ serie.name }}</h3>
+    <h4 class="original-title"> {{ serie.original_name }}</h4>
+    <img class="country-flag" :src="this.store.flagAddress + serie.original_language + '.png'">
+    <p class="vote">{{serie.vote_average}}</p>
  </div>
 
 </template>
@@ -59,11 +45,9 @@ export default {
         align-items: center;
         box-shadow: 3px 3px 6px rgba($color: #000000df, $alpha: 1.0);
 
-
         &:hover {
           scale: 1.1;
         }
-
 
 
         img {

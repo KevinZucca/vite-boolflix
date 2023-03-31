@@ -28,6 +28,7 @@ export default {
         <button @click="$emit('searchClicked')">Vai</button>
     </div>
     <button @click="$emit('nextPage')" class="arrow">&rightarrow;</button>
+
  </div>
 
 </template>

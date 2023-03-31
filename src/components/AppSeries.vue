@@ -22,7 +22,7 @@ export default {
 </script>
    
 <template>
- <h2 id="title">Series TV</h2>
+ <h2 id="title">TV Series</h2>
  <div id="container">
     <div id="input-container">
         <input v-model="store.seriesInput" @keyup.enter="$emit('searchSeries')" type="text" placeholder="Cerca">
