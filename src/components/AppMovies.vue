@@ -50,7 +50,8 @@ export default {
 <template>
  <h2 id="title">Movies</h2>
  <div id="container">
-    <MovieItem v-for="movie in store.movies"
+    <MovieItem v-for="(movie, index) in store.movies"
+    :index="index"
     :movie-image="store.imageAddress + movie.poster_path" 
     :movie-title="movie.title"
     :movie-original-title="movie.original_title"

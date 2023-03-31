@@ -14,7 +14,9 @@ export default {
   },
 
   methods: {
-
+    resetPage() {
+      window.location.reload()
+    }
   }
 }
 </script>
@@ -22,7 +24,7 @@ export default {
 <template>
  <div id="header">
     <button @click="$emit('prevPage')" class="arrow">&leftarrow;</button>
-    <div id="logo">
+    <div id="logo" @click="resetPage()">
        <img src="/public/images/logo.png" alt="boolflix-logo">   
     </div>
     <div id="input-container">
