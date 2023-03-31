@@ -33,7 +33,15 @@ export default {
         flag = "gr";
       }
       return flag;
+    },
+
+
+    convertNumber(number) {
+      const newNumber = Math.floor(Math.ceil(number / 2));
+      this.store.moviesStarsVote = newNumber;
+      return newNumber;
     }
+    
   },
 
 }
@@ -47,7 +55,7 @@ export default {
     :movie-title="movie.title"
     :movie-original-title="movie.original_title"
     :movie-flag="this.store.flagAddress + checkLanguageFlag(movie.original_language) + '.png'"
-    :movie-vote="movie.vote_average"></MovieItem>
+    :movie-vote="convertNumber(movie.vote_average)"></MovieItem>
  </div>
 
 </template>

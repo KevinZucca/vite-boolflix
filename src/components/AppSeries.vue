@@ -32,6 +32,13 @@ export default {
       }
       return flag;
       
+    },
+
+
+    convertNumber(number) {
+      const newNumber = Math.floor(Math.ceil(number / 2));
+      this.store.seriesStarsVote = newNumber;
+      return newNumber;
     }
   }
 }
@@ -50,7 +57,7 @@ export default {
           :serie-title="serie.name"
           :serie-original-title="serie.original_name"
           :serie-flag="this.store.flagAddress + checkLanguageFlag(serie.original_language) + '.png'"
-          :serie-vote="serie.vote_average"
+          :serie-vote="convertNumber(serie.vote_average)"
         ></SeriesItem>
     </div>
  </div>

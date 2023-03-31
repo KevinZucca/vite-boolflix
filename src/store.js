@@ -37,4 +37,11 @@ export const store = reactive ({
 
 
 
+
+
+
+    moviesStarsVote: "",
+    seriesStarsVote: "",
+
+
 })
