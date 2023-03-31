@@ -11,6 +11,7 @@ export default {
     return {
       store,
       language: "",
+
     }
   },
 
@@ -18,28 +19,41 @@ export default {
    
   },
 
-  created() {
-      this.language = this.store.flagAddress + this.store.movies.original_language + '.png';
-      console.log(this.language)
+  props: {
+    movie: Object,
+    movieImage: String,
+    movieTitle: String,
+    movieOriginalTitle: String,
+    movieFlag: String,
+    movieVote: String,
+  },
 
-      if(this.store.movies.original_language == "undefined") {
-        this.language = "lingua sconosciuta"
-      } else if (this.store.movies.original_language == "en") {
-        this.store.movies.original_language == "gb"
-      }
-  }
+  // created() {
+  //     this.language = this.store.flagAddress + this.movie.original_language + '.png';
+  //     console.log(this.language)
+  //     console.log(this.movie.original_language)
+
+  //     if(this.movie.original_language == "") {
+  //       this.language = "Lingua sconosciuta"
+  //     } else if (this.movie.original_language == "en") {
+  //       this.language = this.store.flagAddress + "gb.png"
+  //     }
+  // }
+
+
 
 
 }
 </script>
    
 <template>
- <div class="card" v-for="movie in store.movies">
-    <img class="poster" :src="store.imageAddress + movie.poster_path" alt="">
-    <h3 class="title">{{ movie.title }}</h3>
-    <h4 class="original-title"> {{ movie.original_title }}</h4>
-    <img class="country-flag" :src="this.language">
-    <p class="vote">{{movie.vote_average}}</p>
+ <div class="card">
+    <img class="poster" :src="movieImage" alt="movie-image">
+    <h3 class="title">{{ movieTitle }}</h3>
+    <h4 class="original-title">( {{ movieOriginalTitle }} )</h4>
+    <p>Lingua originale</p>
+    <img class="country-flag" :src="movieFlag">
+    <p class="vote">{{movieVote}}</p>
  </div>
 
 </template>

@@ -15,17 +15,27 @@ export default {
 
   methods: {
     
+  },
+
+  props: {
+    serie: Object,
+    serieImage: String,
+    serieTitle: String,
+    serieOriginalTitle: String,
+    serieFlag: String,
+    serieVote: String,
   }
 }
 </script>
    
 <template>
- <div class="card" v-for="serie in store.series">
-    <img class="poster" :src="store.imageAddress + serie.poster_path" alt="">
-    <h3 class="title">{{ serie.name }}</h3>
-    <h4 class="original-title"> {{ serie.original_name }}</h4>
-    <img class="country-flag" :src="this.store.flagAddress + serie.original_language + '.png'">
-    <p class="vote">{{serie.vote_average}}</p>
+ <div class="card">
+    <img class="poster" :src="serieImage" alt="">
+    <h3 class="title">{{ serieTitle }}</h3>
+    <h4 class="original-title"> {{ serieOriginalTitle }}</h4>
+    <p>Lingua originale</p>
+    <img class="country-flag" :src="serieFlag">
+    <p class="vote">{{serieVote}}</p>
  </div>
 
 </template>

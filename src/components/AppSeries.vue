@@ -9,6 +9,7 @@ export default {
   data() {
     return {
       store,
+      language: "",
     }
   },
 
@@ -17,6 +18,21 @@ export default {
   },
 
   methods: { 
+    checkLanguageFlag(flag) {
+      if (flag == "en") {
+        flag = "gb";
+      } else if (flag == "ja") {
+        flag = "jp"
+      } else if (flag == "cs") {
+        flag = "ch";
+      } else if (flag == "hi") {
+        flag = "hn";
+      } else if (flag == "el") {
+        flag = "gr";
+      }
+      return flag;
+      
+    }
   }
 }
 </script>
@@ -29,7 +45,13 @@ export default {
         <button @click="$emit('searchSeries')">Vai</button>
     </div>
     <div id="series-container">
-        <SeriesItem></SeriesItem>
+        <SeriesItem v-for="serie in store.series"
+          :serie-image="store.imageAddress + serie.poster_path"
+          :serie-title="serie.name"
+          :serie-original-title="serie.original_name"
+          :serie-flag="this.store.flagAddress + checkLanguageFlag(serie.original_language) + '.png'"
+          :serie-vote="serie.vote_average"
+        ></SeriesItem>
     </div>
  </div>
 

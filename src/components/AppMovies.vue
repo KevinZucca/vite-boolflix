@@ -9,6 +9,8 @@ export default {
   data() {
     return {
       store,
+      language: "",
+
     }
   },
 
@@ -18,15 +20,34 @@ export default {
   },
 
   methods: {
-    
-  }
+    checkLanguageFlag(flag) {
+      if (flag == "en") {
+        flag = "gb";
+      } else if (flag == "ja") {
+        flag = "jp"
+      } else if (flag == "cs") {
+        flag = "ch";
+      } else if (flag == "hi") {
+        flag = "hn";
+      } else if (flag == "el") {
+        flag = "gr";
+      }
+      return flag;
+    }
+  },
+
 }
 </script>
    
 <template>
  <h2 id="title">Movies</h2>
  <div id="container">
-    <MovieItem></MovieItem>
+    <MovieItem v-for="movie in store.movies"
+    :movie-image="store.imageAddress + movie.poster_path" 
+    :movie-title="movie.title"
+    :movie-original-title="movie.original_title"
+    :movie-flag="this.store.flagAddress + checkLanguageFlag(movie.original_language) + '.png'"
+    :movie-vote="movie.vote_average"></MovieItem>
  </div>
 
 </template>
