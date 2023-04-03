@@ -75,6 +75,7 @@ export default {
           :serie-original-title="serie.original_name"
           :serie-flag="this.store.flagAddress + checkLanguageFlag(serie.original_language) + '.png'"
           :serie-vote="convertNumber(serie.vote_average)"
+          :serie-overview="serie.overview">
         ></SeriesItem>
         <p v-else class="noResult-advise">Nessun risultato</p>
 

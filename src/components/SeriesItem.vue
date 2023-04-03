@@ -31,6 +31,7 @@ export default {
     serieOriginalTitle: String,
     serieFlag: String,
     serieVote: String,
+    serieOverview: String,
   }
 }
 </script>
@@ -44,12 +45,16 @@ export default {
         <p>Lingua originale</p>
         <img class="country-flag" :src="serieFlag">
         <div class="stars">
-        <i v-for="star in store.seriesStarsVote" class="fa-solid fa-star vote" style="color: #ffc31f;"></i>
-    </div>
+          <i v-for="star in store.seriesStarsVote" class="fa-solid fa-star vote" style="color: #ffc31f;"></i>
+        </div>
+        <p class="overview">{{serieOverview}}</p>
   </div>
  </div>
 
 </template>
 
 <style lang="scss" scoped>
+.overview {
+  font-size: .8em;
+}
 </style>

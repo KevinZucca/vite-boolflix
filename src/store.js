@@ -26,7 +26,6 @@ export const store = reactive ({
 
 
     // SERIES
-
     series: [],
 
     seriesInput: "",
@@ -40,7 +39,7 @@ export const store = reactive ({
     moviesStarsVote: "",
     seriesStarsVote: "",
 
-    viewDetails: false,
+   
 
 
 

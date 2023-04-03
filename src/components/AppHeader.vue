@@ -41,8 +41,12 @@ export default {
         justify-content: space-around;
         align-items: center;
 
-        background-color: rgba(0, 0, 0, 0.858);
+        background-color: rgba(0, 0, 0, 0.977);
+        width: 100%;
         height: 100px;
+
+        position: fixed;
+        z-index: 100;
 
         #logo {
           cursor: pointer;

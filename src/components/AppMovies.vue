@@ -73,7 +73,9 @@ export default {
       :movie-title="movie.title"
       :movie-original-title="movie.original_title"
       :movie-flag="this.store.flagAddress + checkLanguageFlag(movie.original_language) + '.png'"
-      :movie-vote="convertNumber(movie.vote_average)"></MovieItem>
+      :movie-vote="convertNumber(movie.vote_average)"
+      :movie-overview="movie.overview">
+      </MovieItem>
 
       <p v-else class="noResult-advise">Nessun risultato</p>
 

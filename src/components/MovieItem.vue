@@ -17,6 +17,7 @@ export default {
 
   methods: {
     showDetails(event) {    
+     
      const activeCard = event.srcElement;
 
      activeCard.classList.toggle("active")
@@ -31,6 +32,7 @@ export default {
     movieOriginalTitle: String,
     movieFlag: String,
     movieVote: String,
+    movieOverview: String,
   },
   
 
@@ -48,6 +50,7 @@ export default {
         <div class="stars">
           <i v-for="star in store.moviesStarsVote" class="fa-solid fa-star vote" style="color: #ffc31f;"></i>
         </div>
+        <p class="overview">{{movieOverview}}</p>
     </div> 
  </div>
 
@@ -55,4 +58,8 @@ export default {
 
 <style lang="scss" scoped>
 
+
+.overview {
+  font-size: .8em;
+}
 </style>
