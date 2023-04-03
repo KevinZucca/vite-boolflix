@@ -48,14 +48,14 @@ export default {
 
     scrollToLeft() {
       document.querySelector(".series-container").scrollBy({
-        left: 350, 
+        left: 450, 
         behavior: "smooth"
       })
     },
 
     scrollToRight() {
       document.querySelector(".series-container").scrollBy({
-        left: -350, 
+        left: -450, 
         behavior: "smooth"
       })
     }
@@ -78,7 +78,7 @@ export default {
         ></SeriesItem>
         <p v-else class="noResult-advise">Nessun risultato</p>
 
-        <div class="scroll-arrow-left" @click="scrolllToRight()">
+        <div class="scroll-arrow-left" @click="scrollToRight()">
         <i class="fa-solid fa-chevron-left"></i>
         </div>
         <div class="scroll-arrow-right" @click="scrollToLeft()">

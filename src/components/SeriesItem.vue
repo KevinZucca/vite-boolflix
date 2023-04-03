@@ -34,7 +34,7 @@ export default {
  <div class="card">
     <img class="poster" :src="serieImage" alt="">
     <div :class="store.viewDetails ? 'visible' : 'invisible'" class="card-content">
-        <h3 class="title">{{ serieTitle }}</h3>
+        <h3 class="card-title">{{ serieTitle }}</h3>
         <h4 class="original-title"> {{ serieOriginalTitle }}</h4>
         <p>Lingua originale</p>
         <img class="country-flag" :src="serieFlag">

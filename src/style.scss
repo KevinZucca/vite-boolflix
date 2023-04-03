@@ -39,12 +39,13 @@
   flex-shrink: 0;
 
   box-shadow: 5px 5px 6px rgba($color: #000000df, $alpha: 1.0);
-  
+  scale: 1;
+  transition: scale .2s ease-in;
 
-
-  &:hover {
-    scale: 1.1;
+  .card-title {
+    font-size: 20px;
   }
+  
 
 
   &:hover img {
@@ -91,11 +92,17 @@
 
   .main-container {
     position: relative;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }   
   }
   
 
   .card-container {
     width: 100%;
+    height: 400px;
 
     display: flex;
     flex-flow: row;
@@ -103,6 +110,7 @@
     gap: 20px;
 
     margin: 50px auto;
+    padding-left: 2200px;
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;

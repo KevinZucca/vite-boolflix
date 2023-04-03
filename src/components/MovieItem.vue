@@ -16,10 +16,16 @@ export default {
   },
 
   methods: {
+    showDetails(event) {    
+     const activeCard = event.srcElement;
+
+     activeCard.classList.toggle("active")
+    }
   },
 
   props: {
     movie: Object,
+    index: Number,
     movieImage: String,
     movieTitle: String,
     movieOriginalTitle: String,
@@ -32,10 +38,10 @@ export default {
 </script>
    
 <template>
- <div class="card">
+ <div class="card" @click="showDetails($event)">
     <img class="poster" :src="movieImage" alt="movie-image">
-      <div :class="store.viewDetails ? 'visible' : 'invisible'" class="card-content" >
-          <h3 class="title">{{ movieTitle }}</h3>
+      <div class="card-content">
+          <h3 class="card-title">{{ movieTitle }}</h3>
           <h4 class="original-title">( {{ movieOriginalTitle }} )</h4>
           <p>Lingua originale</p>
           <img class="country-flag" :src="movieFlag">
@@ -48,14 +54,18 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.card-content {
+  display: none;
+}
 
-  .invisible {
-    display: none;
-  }
 
-  .visible {
+.active {
+  scale: 1.3;
+}
+  .active .card-content {
     display: flex;
     flex-flow: column;
     align-items: center;
   }
+
 </style>
