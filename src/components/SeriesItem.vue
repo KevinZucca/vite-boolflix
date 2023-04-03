@@ -16,6 +16,11 @@ export default {
   },
 
   methods: {
+    showDetails(event) {    
+     const activeCard = event.srcElement;
+
+     activeCard.classList.toggle("active")
+    }
     
   },
 
@@ -31,9 +36,9 @@ export default {
 </script>
    
 <template>
- <div class="card">
+ <div class="card" @click="showDetails($event)">
     <img class="poster" :src="serieImage" alt="">
-    <div :class="store.viewDetails ? 'visible' : 'invisible'" class="card-content">
+    <div class="card-content">
         <h3 class="card-title">{{ serieTitle }}</h3>
         <h4 class="original-title"> {{ serieOriginalTitle }}</h4>
         <p>Lingua originale</p>
@@ -47,14 +52,4 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-  .invisible {
-    display: none;
-  }
-
-  .visible {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-  }
-
 </style>

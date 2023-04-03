@@ -40,32 +40,19 @@ export default {
 <template>
  <div class="card" @click="showDetails($event)">
     <img class="poster" :src="movieImage" alt="movie-image">
-      <div class="card-content">
-          <h3 class="card-title">{{ movieTitle }}</h3>
-          <h4 class="original-title">( {{ movieOriginalTitle }} )</h4>
-          <p>Lingua originale</p>
-          <img class="country-flag" :src="movieFlag">
-          <div class="stars">
+    <div class="card-content">
+        <h3 class="card-title">{{ movieTitle }}</h3>
+        <h4 class="original-title">( {{ movieOriginalTitle }} )</h4>
+        <p>Lingua originale</p>
+        <img class="country-flag" :src="movieFlag">
+        <div class="stars">
           <i v-for="star in store.moviesStarsVote" class="fa-solid fa-star vote" style="color: #ffc31f;"></i>
-      </div>
+        </div>
     </div> 
  </div>
 
 </template>
 
 <style lang="scss" scoped>
-.card-content {
-  display: none;
-}
-
-
-.active {
-  scale: 1.3;
-}
-  .active .card-content {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-  }
 
 </style>
