@@ -41,6 +41,7 @@ export default {
 
       axios.get(newMoviesList).then((res)=> {
         this.store.movies = res.data.results;
+        this.store.showJumbo = false;
       })
 
 
@@ -48,6 +49,7 @@ export default {
 
       axios.get(newSeriesList).then((res)=> {
         this.store.series = res.data.results;
+        this.store.showJumbo = false;
       })
     },
   }
