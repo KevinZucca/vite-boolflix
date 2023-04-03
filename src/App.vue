@@ -5,12 +5,13 @@ import AppHeader from "./components/AppHeader.vue";
 import AppMovies from "./components/AppMovies.vue";
 import AppSeries from "./components/AppSeries.vue";
 import axios from "axios";
+import { createStructuralDirectiveTransform } from "@vue/compiler-core";
 
 export default {
   data() {
     return {
       store,
-      pageIndex: "",
+
     }
   },
 
@@ -22,7 +23,6 @@ export default {
     axios.get(store.secondaAPIcall).then((res)=> {
       this.store.series = res.data.results;
     })
-
 
   },
 
@@ -48,27 +48,6 @@ export default {
         this.store.series = res.data.results;
       })
     },
-
-    goNextPage() {
-      this.store.movies[this.pageIndex];
-
-      let actualPage = this.store.firstAPIcall + "&page=" + this.pageIndex;
-      this.pageIndex++;
-      axios.get(actualPage).then((res)=> {
-        this.store.movies = res.data.results;
-      })
-    },
-
-    goPrevPage() {
-      this.store.movies[this.pageIndex];
-
-      let actualPage = this.store.firstAPIcall + "&page=" + this.pageIndex;
-      this.pageIndex--;
-      axios.get(actualPage).then((res)=> {
-        this.store.movies = res.data.results;
-
-      })
-    }
   }
 }
 </script>

@@ -42,6 +42,20 @@ export default {
       return newNumber;
     },
 
+    scrollToLeft() {
+      document.querySelector(".movie-container").scrollBy({
+        left: 350, 
+        behavior: "smooth"
+      })
+    },
+
+    scrollToRight() {
+      document.querySelector(".movie-container").scrollBy({
+        left: -350, 
+        behavior: "smooth"
+      })
+    }
+
     
   },
 
@@ -49,47 +63,36 @@ export default {
 </script>
    
 <template>
- <h2 id="title">Movies</h2>
- <div class="card-container">
-    <MovieItem v-if="this.store.movies.length > 0" v-for="(movie, index) in store.movies"
-    :index="index"
-    :movie-image="store.imageAddress + movie.poster_path" 
-    :movie-title="movie.title"
-    :movie-original-title="movie.original_title"
-    :movie-flag="this.store.flagAddress + checkLanguageFlag(movie.original_language) + '.png'"
-    :movie-vote="convertNumber(movie.vote_average)"></MovieItem>
+  <h2 class="title">Movies</h2>
 
-    <p v-else class="noResult-advise">Nessun risultato</p>
+  <div class="main-container">
+    <div class="card-container movie-container">
+      <MovieItem v-if="this.store.movies.length > 0" v-for="(movie, index) in store.movies"
+      :index="index"
+      :movie-image="store.imageAddress + movie.poster_path" 
+      :movie-title="movie.title"
+      :movie-original-title="movie.original_title"
+      :movie-flag="this.store.flagAddress + checkLanguageFlag(movie.original_language) + '.png'"
+      :movie-vote="convertNumber(movie.vote_average)"></MovieItem>
 
+      <p v-else class="noResult-advise">Nessun risultato</p>
 
-    <div class="scroll-arrow" @click="moveCardsContainer()">
-      <i class="fa-solid fa-chevron-right"></i>
-    </div>
+      <div class="scroll-arrow-left" @click="scrolllToRight()">
+        <i class="fa-solid fa-chevron-left"></i>
+      </div>
+      <div class="scroll-arrow-right" @click="scrollToLeft()">
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
  </div>
+  </div>
+
 
 </template>
 
 <style lang="scss" scoped>
 
-    #title {
-      font-size: 40px;
-      margin-left: 20px;
-    }
 
-    .scroll-arrow {
-      position: absolute;
-      right: 5px;
-      top: 50%;
-      transform: translate(-50%, -50%);
+    
 
-      cursor: pointer;
-
-      color: rgba(0, 0, 0, 0.715);
-      background-color: #ffffff8b;
-      font-size: 25px;
-      border-radius: 50%;
-
-      padding: 10px 20px;
-    }
-
+ 
 </style>

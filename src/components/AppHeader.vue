@@ -22,9 +22,7 @@ export default {
 </script>
    
 <template>
- <div id="header">
-    <button @click="$emit('prevPage')" class="arrow">&leftarrow;</button>
-    
+ <div id="header">    
     <div id="logo" @click="resetPage()">
        <img src="/public/images/logo.png" alt="boolflix-logo">   
     </div>
@@ -33,8 +31,6 @@ export default {
         <button class="goButton" @click="$emit('searchClicked');">Vai</button>
     </div>
     
-    <button @click="$emit('nextPage')" class="arrow">&rightarrow;</button>
-
  </div>
 
 </template>
@@ -42,7 +38,7 @@ export default {
 <style lang="scss" scoped>
     #header {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
 
         background-color: rgba(0, 0, 0, 0.858);
@@ -52,13 +48,5 @@ export default {
           cursor: pointer;
         }
 
-
-        .arrow {
-          height: 50px;
-          width: 60px;
-          margin: 20px;
-
-          font-size: 30px;
-        }
     }
 </style>

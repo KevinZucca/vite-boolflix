@@ -44,16 +44,31 @@ export default {
       const newNumber = Math.floor(Math.ceil(Number(number / 2)));
       this.store.seriesStarsVote = newNumber;
       return newNumber;
+    },
+
+    scrollToLeft() {
+      document.querySelector(".series-container").scrollBy({
+        left: 350, 
+        behavior: "smooth"
+      })
+    },
+
+    scrollToRight() {
+      document.querySelector(".series-container").scrollBy({
+        left: -350, 
+        behavior: "smooth"
+      })
     }
+
   }
 }
 </script>
    
 <template>
- <h2 id="title">TV Series</h2>
- <div id="container">
+ <h2 class="title">TV Series</h2>
+ <div class="main-container">
 
-    <div class="card-container">
+    <div class="card-container series-container">
         <SeriesItem v-if="this.store.series.length > 0" v-for="serie in store.series"
           :serie-image="store.imageAddress + serie.poster_path"
           :serie-title="serie.name"
@@ -62,15 +77,18 @@ export default {
           :serie-vote="convertNumber(serie.vote_average)"
         ></SeriesItem>
         <p v-else class="noResult-advise">Nessun risultato</p>
+
+        <div class="scroll-arrow-left" @click="scrolllToRight()">
+        <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <div class="scroll-arrow-right" @click="scrollToLeft()">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
     </div>
  </div>
 
 </template>
 
 <style lang="scss" scoped>
-    #title {
-        font-size: 40px;
-        margin-left: 40px;
-    }
    
 </style>
