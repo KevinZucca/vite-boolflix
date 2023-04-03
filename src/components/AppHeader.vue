@@ -24,13 +24,15 @@ export default {
 <template>
  <div id="header">
     <button @click="$emit('prevPage')" class="arrow">&leftarrow;</button>
+    
     <div id="logo" @click="resetPage()">
        <img src="/public/images/logo.png" alt="boolflix-logo">   
     </div>
     <div id="input-container">
-        <input v-model="store.inputValue" @keyup.enter="$emit('searchClicked')" type="text" placeholder="Cerca">
-        <button class="goButton" @click="$emit('searchClicked')">Vai</button>
+        <input v-model="store.inputValue" @keyup.enter="$emit('searchClicked');" type="text" placeholder="Cerca">
+        <button class="goButton" @click="$emit('searchClicked');">Vai</button>
     </div>
+    
     <button @click="$emit('nextPage')" class="arrow">&rightarrow;</button>
 
  </div>

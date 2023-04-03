@@ -40,7 +40,8 @@ export default {
       const newNumber = Math.floor(Math.ceil(Number(number / 2)));
       this.store.moviesStarsVote = newNumber;
       return newNumber;
-    }
+    },
+
     
   },
 
@@ -49,14 +50,21 @@ export default {
    
 <template>
  <h2 id="title">Movies</h2>
- <div id="container">
-    <MovieItem v-for="(movie, index) in store.movies"
+ <div class="card-container">
+    <MovieItem v-if="this.store.noResult == false" v-for="(movie, index) in store.movies"
     :index="index"
     :movie-image="store.imageAddress + movie.poster_path" 
     :movie-title="movie.title"
     :movie-original-title="movie.original_title"
     :movie-flag="this.store.flagAddress + checkLanguageFlag(movie.original_language) + '.png'"
     :movie-vote="convertNumber(movie.vote_average)"></MovieItem>
+
+    <p v-else class="noResult-advise">{{ this.store.noResultContent }}</p>
+
+
+    <div class="scroll-arrow">
+      <i class="fa-solid fa-chevron-right"></i>
+    </div>
  </div>
 
 </template>
@@ -65,17 +73,22 @@ export default {
 
     #title {
       font-size: 40px;
-      text-align: center;
+      margin-left: 20px;
     }
 
+    .scroll-arrow {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translate(-50%, -50%);
 
-    #container {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        gap: 20px;
+      cursor: pointer;
 
-        margin: 50px auto;
+      color: rgba(0, 0, 0, 0.715);
+      background-color: #ffffff8b;
+      font-size: 25px;
+      border-radius: 50%;
 
+      padding: 10px 20px;
     }
 </style>

@@ -34,20 +34,26 @@ export default {
 
   methods: {
 
-    searchMovieTitle() {
+    searchTitle() {
       let newMoviesList = this.store.APIcall + this.store.APIquery + this.store.inputValue;
 
       axios.get(newMoviesList).then((res)=> {
         this.store.movies = res.data.results;
+      }).catch(()=> {
+        this.store.noResult = true;
+        this.store.noResultContent = "Nessun Risultato";
       })
-    },
 
-    searchSeriesTitle() {
-      let newSeriesList = this.store.APIcall2 + this.store.APIquery + this.store.seriesInput;
+
+      let newSeriesList = this.store.APIcall2 + this.store.APIquery + this.store.inputValue;
 
       axios.get(newSeriesList).then((res)=> {
         this.store.series = res.data.results;
+      }).catch(()=> {
+        this.store.noResult = true;
+        this.store.noResultContent = "Nessun Risultato";
       })
+
     },
 
     goNextPage() {
@@ -75,9 +81,9 @@ export default {
 </script>
 
 <template>
-  <AppHeader @prevPage="goPrevPage()" @nextPage="goNextPage()" @searchClicked="searchMovieTitle()"></AppHeader>
+  <AppHeader @prevPage="goPrevPage()" @nextPage="goNextPage()" @searchClicked="searchTitle()"></AppHeader>
   <AppMovies></AppMovies>
-  <AppSeries @searchSeries="searchSeriesTitle()"></AppSeries>
+  <AppSeries></AppSeries>
 </template>
 
 <style lang="scss" scoped>

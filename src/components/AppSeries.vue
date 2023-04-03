@@ -52,18 +52,16 @@ export default {
 <template>
  <h2 id="title">TV Series</h2>
  <div id="container">
-    <div id="input-container">
-        <input v-model="store.seriesInput" @keyup.enter="$emit('searchSeries')" type="text" placeholder="Cerca">
-        <button class="goButton" @click="$emit('searchSeries')">Vai</button>
-    </div>
-    <div id="series-container">
-        <SeriesItem v-for="serie in store.series"
+
+    <div class="card-container">
+        <SeriesItem v-show="this.store.noResult == false" v-for="serie in store.series"
           :serie-image="store.imageAddress + serie.poster_path"
           :serie-title="serie.name"
           :serie-original-title="serie.original_name"
           :serie-flag="this.store.flagAddress + checkLanguageFlag(serie.original_language) + '.png'"
           :serie-vote="convertNumber(serie.vote_average)"
         ></SeriesItem>
+        <p v-show="this.store.noResult == true" class="noResult-advise">{{ this.store.noResultContent }}</p>
     </div>
  </div>
 
@@ -72,25 +70,7 @@ export default {
 <style lang="scss" scoped>
     #title {
         font-size: 40px;
-        text-align: center;
+        margin-left: 40px;
     }
-
-    #container {
-        
-       #input-container {
-            display: flex;
-            justify-content: center;
-
-            margin: 50px auto;
-       }
-        
-        #series-container {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-            gap: 20px;
-
-            margin: 50px auto;
-        }
-    }
+   
 </style>
