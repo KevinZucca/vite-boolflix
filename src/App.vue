@@ -39,9 +39,6 @@ export default {
 
       axios.get(newMoviesList).then((res)=> {
         this.store.movies = res.data.results;
-      }).catch(()=> {
-        this.store.noResult = true;
-        this.store.noResultContent = "Nessun Risultato";
       })
 
 
@@ -49,11 +46,7 @@ export default {
 
       axios.get(newSeriesList).then((res)=> {
         this.store.series = res.data.results;
-      }).catch(()=> {
-        this.store.noResult = true;
-        this.store.noResultContent = "Nessun Risultato";
       })
-
     },
 
     goNextPage() {

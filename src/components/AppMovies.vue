@@ -51,7 +51,7 @@ export default {
 <template>
  <h2 id="title">Movies</h2>
  <div class="card-container">
-    <MovieItem v-if="this.store.noResult == false" v-for="(movie, index) in store.movies"
+    <MovieItem v-if="this.store.movies.length > 0" v-for="(movie, index) in store.movies"
     :index="index"
     :movie-image="store.imageAddress + movie.poster_path" 
     :movie-title="movie.title"
@@ -59,10 +59,10 @@ export default {
     :movie-flag="this.store.flagAddress + checkLanguageFlag(movie.original_language) + '.png'"
     :movie-vote="convertNumber(movie.vote_average)"></MovieItem>
 
-    <p v-else class="noResult-advise">{{ this.store.noResultContent }}</p>
+    <p v-else class="noResult-advise">Nessun risultato</p>
 
 
-    <div class="scroll-arrow">
+    <div class="scroll-arrow" @click="moveCardsContainer()">
       <i class="fa-solid fa-chevron-right"></i>
     </div>
  </div>
@@ -91,4 +91,5 @@ export default {
 
       padding: 10px 20px;
     }
+
 </style>

@@ -54,14 +54,14 @@ export default {
  <div id="container">
 
     <div class="card-container">
-        <SeriesItem v-show="this.store.noResult == false" v-for="serie in store.series"
+        <SeriesItem v-if="this.store.series.length > 0" v-for="serie in store.series"
           :serie-image="store.imageAddress + serie.poster_path"
           :serie-title="serie.name"
           :serie-original-title="serie.original_name"
           :serie-flag="this.store.flagAddress + checkLanguageFlag(serie.original_language) + '.png'"
           :serie-vote="convertNumber(serie.vote_average)"
         ></SeriesItem>
-        <p v-show="this.store.noResult == true" class="noResult-advise">{{ this.store.noResultContent }}</p>
+        <p v-else class="noResult-advise">Nessun risultato</p>
     </div>
  </div>
 
