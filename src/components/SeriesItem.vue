@@ -45,7 +45,7 @@ export default {
         <p>Lingua originale</p>
         <img class="country-flag" :src="serieFlag">
         <div class="stars">
-          <i v-for="star in store.seriesStarsVote" class="fa-solid fa-star vote" style="color: #ffc31f;"></i>
+          <i v-for="star in store.seriesStarsVote" class="fa-solid fa-star vote" style="color: #ffc31f;"></i><i v-for="star in 5 - store.seriesStarsVote" class="fa-solid fa-star vote" style="color: white;"></i>
         </div>
         <p class="overview">{{serieOverview}}</p>
   </div>

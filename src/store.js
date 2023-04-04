@@ -30,7 +30,7 @@ export const store = reactive ({
 
     seriesInput: "",
 
-    secondaAPIcall: "https://api.themoviedb.org/3/discover/tv?api_key=4e2a533e46ec71346f9b1fdf830c85b5&query=&language=it-IT",
+    secondaAPIcall: "https://api.themoviedb.org/3/discover/tv?api_key=4e2a533e46ec71346f9b1fdf830c85b5&query=&language=it-IT&page=3",
 
     APIcall2: "https://api.themoviedb.org/3/search/tv?api_key=4e2a533e46ec71346f9b1fdf830c85b5",
 

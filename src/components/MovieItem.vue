@@ -48,7 +48,7 @@ export default {
         <p>Lingua originale</p>
         <img class="country-flag" :src="movieFlag">
         <div class="stars">
-          <i v-for="star in store.moviesStarsVote" class="fa-solid fa-star vote" style="color: #ffc31f;"></i>
+          <i v-for="star in store.moviesStarsVote" class="fa-solid fa-star vote" style="color: #ffc31f;"></i><i v-for="star in 5 - store.moviesStarsVote" class="fa-solid fa-star vote" style="color: white;"></i>
         </div>
         <p class="overview">{{movieOverview}}</p>
     </div> 

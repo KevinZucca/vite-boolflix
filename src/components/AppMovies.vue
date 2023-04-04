@@ -35,7 +35,6 @@ export default {
       return flag;
     },
 
-
     convertNumber(number) {
       const newNumber = Math.floor(Math.ceil(Number(number / 2)));
       this.store.moviesStarsVote = newNumber;
