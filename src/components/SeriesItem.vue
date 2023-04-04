@@ -20,6 +20,14 @@ export default {
      const activeCard = event.srcElement;
 
      activeCard.classList.toggle("active")
+    },
+
+    checkImage(image) {
+      if(image == "https://image.tmdb.org/t/p/w342null") {
+        return "https://th.bing.com/th/id/R.ea411ebf6153f5f3201aa5a134949f3e?rik=TMsZisGUrPRPSA&pid=ImgRaw&r=0"
+      } else {
+        return image
+      }
     }
     
   },
@@ -38,7 +46,7 @@ export default {
    
 <template>
  <div class="card" @click="showDetails($event)">
-    <img class="poster" :src="serieImage" alt="">
+    <img :src="checkImage(serieImage)" alt="img-poster">
     <div class="card-content">
         <h3 class="card-title">{{ serieTitle }}</h3>
         <h4 class="original-title"> {{ serieOriginalTitle }}</h4>
@@ -57,4 +65,5 @@ export default {
 .overview {
   font-size: .8em;
 }
+
 </style>

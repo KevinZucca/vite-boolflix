@@ -36,8 +36,6 @@ export default {
         width: 100%;
         height: 850px;
 
-        margin-bottom: 50px;
-
         &:hover img {
                 transform:scale(1.1);
             }

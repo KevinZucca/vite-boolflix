@@ -66,6 +66,8 @@ export default {
    
 <template>
  <h2 class="title">TV Series</h2>
+ <p class="results" v-if="store.showJumbo == false">Risultati trovati: {{ store.SeriesResultsNumber }}</p>
+
  <div class="main-container">
 
     <div class="card-container series-container">

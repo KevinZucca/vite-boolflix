@@ -41,6 +41,10 @@ export const store = reactive ({
 
     showJumbo: true,
 
+    MoviesResultsNumber: "",
+    SeriesResultsNumber: "",
+
+
    
 
 

@@ -17,10 +17,20 @@ export default {
 
   methods: {
     showDetails(event) {    
-     
-     const activeCard = event.srcElement;
+    
 
+     const activeCard = event.srcElement;
      activeCard.classList.toggle("active")
+    
+    },
+
+
+    checkImage(image) {
+      if(image == "https://image.tmdb.org/t/p/w342null") {
+        return "https://th.bing.com/th/id/R.ea411ebf6153f5f3201aa5a134949f3e?rik=TMsZisGUrPRPSA&pid=ImgRaw&r=0"
+      } else {
+        return image
+      }
     }
   },
 
@@ -40,8 +50,8 @@ export default {
 </script>
    
 <template>
- <div class="card" @click="showDetails($event)">
-    <img class="poster" :src="movieImage" alt="movie-image">
+ <div class="card"  @click="showDetails($event)">
+    <img :src="checkImage(movieImage)" alt="img-poster">
     <div class="card-content">
         <h3 class="card-title">{{ movieTitle }}</h3>
         <h4 class="original-title">( {{ movieOriginalTitle }} )</h4>
@@ -62,4 +72,5 @@ export default {
 .overview {
   font-size: .8em;
 }
+
 </style>

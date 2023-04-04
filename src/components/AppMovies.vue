@@ -62,7 +62,8 @@ export default {
 </script>
    
 <template>
-  <h2 class="title">Movies</h2>
+  <h2 class="title movies-title">Movies</h2>
+  <p class="results" v-if="store.showJumbo == false">Risultati trovati: {{ store.MoviesResultsNumber }}</p>
 
   <div class="main-container">
     <div class="card-container movie-container">
@@ -91,8 +92,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
-
     
 
  
