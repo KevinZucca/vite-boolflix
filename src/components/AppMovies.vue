@@ -43,14 +43,14 @@ export default {
 
     scrollToLeft() {
       document.querySelector(".movie-container").scrollBy({
-        left: 450, 
+        left: 550, 
         behavior: "smooth"
       })
     },
 
     scrollToRight() {
       document.querySelector(".movie-container").scrollBy({
-        left: -450, 
+        left: -550, 
         behavior: "smooth"
       })
     }

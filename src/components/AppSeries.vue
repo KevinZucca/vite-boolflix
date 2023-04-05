@@ -48,14 +48,14 @@ export default {
 
     scrollToLeft() {
       document.querySelector(".series-container").scrollBy({
-        left: 450, 
+        left: 550, 
         behavior: "smooth"
       })
     },
 
     scrollToRight() {
       document.querySelector(".series-container").scrollBy({
-        left: -450, 
+        left: -550, 
         behavior: "smooth"
       })
     }

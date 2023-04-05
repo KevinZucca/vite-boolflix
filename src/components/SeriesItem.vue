@@ -16,11 +16,16 @@ export default {
   },
 
   methods: {
-    showDetails(event) {    
-     const activeCard = event.srcElement;
-
-     activeCard.classList.toggle("active")
+    showDetails(event) {
+    const activeCards = document.querySelectorAll('.active');
+    activeCards.forEach(card => {
+      if (card != event.currentTarget) {
+        card.classList.remove('active');
+      }
+    });
+      event.currentTarget.classList.toggle('active');
     },
+
 
     checkImage(image) {
       if(image == "https://image.tmdb.org/t/p/w342null") {
@@ -28,7 +33,9 @@ export default {
       } else {
         return image
       }
-    }
+    },
+
+    
     
   },
 
@@ -49,7 +56,7 @@ export default {
     <img :src="checkImage(serieImage)" alt="img-poster">
     <div class="card-content">
         <h3 class="card-title">{{ serieTitle }}</h3>
-        <h4 class="original-title"> {{ serieOriginalTitle }}</h4>
+        <h4 class="original-title">Titolo Originale: <br>{{ serieOriginalTitle }}</h4>
         <p>Lingua originale</p>
         <img class="country-flag" :src="serieFlag">
         <div class="stars">

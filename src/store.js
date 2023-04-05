@@ -45,6 +45,25 @@ export const store = reactive ({
     SeriesResultsNumber: "",
 
 
+
+
+    // CAST
+    castCallFirstPart: "https://api.themoviedb.org/3/movie/",
+    castCallSecondPart: "/credits?api_key=4e2a533e46ec71346f9b1fdf830c85b5&query=&language=it-IT",
+
+    moviesID: "",
+    movieCast: "",
+
+    castResult: "",
+
+    finalResult: "",
+
+
+    // MOST POPULAR MOVIES
+
+    latestMoviesCall: "https://api.themoviedb.org/3/movie/latest?api_key=4e2a533e46ec71346f9b1fdf830c85b5",
+
+    latestMovieResult: [],
    
 
 

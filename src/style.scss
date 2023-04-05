@@ -20,6 +20,10 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .card,
  button {
   cursor: pointer;
@@ -64,13 +68,15 @@
 
     display: flex;
     flex-flow: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 20px;
 
     margin: 20px auto;
     padding-top: 3px;
     padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 600px;
 
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
@@ -98,7 +104,7 @@
     
     
       .card-title {
-        font-size: 20px;
+        font-size: 15px;
         width: 250px;
       }
     
@@ -152,7 +158,7 @@
 
     .scroll-arrow-right {
       position: absolute;
-      right: 5px;
+      right: 0;
       top: 50%;
       transform: translate(-50%, -50%);
 
@@ -173,6 +179,8 @@
 
   .noResult-advise {
     font-size: 30px;
+    text-align: center;
+    flex-grow: 1;
   }
 
   .title {
@@ -201,13 +209,12 @@
     transition: scale .5s ease-in-out;
     transition: padding .3s ease-in-out;
 
-
     & .card-content {
       display: flex;
       flex-flow: column;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 5px;
   
       font-size: .8em;
       background-color: #000000d3;

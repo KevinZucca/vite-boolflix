@@ -12,16 +12,19 @@ export default {
     return {
       store,
       language: "",
+      
     }
   },
 
   methods: {
-    showDetails(event) {    
-    
-
-     const activeCard = event.srcElement;
-     activeCard.classList.toggle("active")
-    
+    showDetails(event) {
+    const activeCards = document.querySelectorAll('.active');
+    activeCards.forEach(card => {
+      if (card != event.currentTarget) {
+        card.classList.remove('active');
+      }
+    });
+      event.currentTarget.classList.toggle('active');
     },
 
 
@@ -43,6 +46,7 @@ export default {
     movieFlag: String,
     movieVote: String,
     movieOverview: String,
+    movieID: String,
   },
   
 
@@ -54,7 +58,7 @@ export default {
     <img :src="checkImage(movieImage)" alt="img-poster">
     <div class="card-content">
         <h3 class="card-title">{{ movieTitle }}</h3>
-        <h4 class="original-title">( {{ movieOriginalTitle }} )</h4>
+        <h4 class="original-title">Titolo Originale: <br>{{ movieOriginalTitle }}</h4>
         <p>Lingua originale</p>
         <img class="country-flag" :src="movieFlag">
         <div class="stars">

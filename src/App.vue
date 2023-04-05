@@ -17,13 +17,40 @@ export default {
   },
 
   created() {
+
+        // GET THE LIST OF 20 MOVIES
     axios.get(store.firstAPIcall).then((res)=> {
         this.store.movies = res.data.results;
-      })
 
+
+        // GET THE IDs OF THE LIST OF MOVIES
+        this.store.movies.forEach(el =>{
+          this.store.moviesID = el.id;
+          // console.log(this.store.moviesID)
+        })
+       })
+
+       this.store.movies.forEach((movie) =>{
+        axios.get(store.castCallFirstPart + movie.id + store.castCallSecondPart).then((res)=> {
+         this.store.castResult = res.data.cast
+
+         const newarray = this.store.castResult.slice(0, 5)
+         this.store.finalResult = newarray
+
+         console.log(this.store.finalResult)
+          newarray.forEach(element => {
+            console.log(element.name)
+          });
+         console.log(this.store.castResult)
+        })
+       })
+
+        // GET THE LIST OF 20 SERIES
     axios.get(store.secondaAPIcall).then((res)=> {
       this.store.series = res.data.results;
-    })
+    })  
+    
+
 
   },
 
